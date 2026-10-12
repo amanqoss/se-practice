@@ -1,0 +1,31 @@
+schema: 1
+week: "03"
+student:
+  name: Yernur
+  student_id: 25B032075
+  github: amanqoss
+assistant:
+  tool: ChatGPT
+  model: GPT-5.6
+counts:
+  user_stories: 7
+  acceptance_criteria_sets: 3
+checker:
+  pass: 23
+  fail: 0
+  error: 0
+  commit: d7dc73d
+assumptions:
+  overlap_touching_bookings: allowed
+  exactly_two_hours: allowed
+traceability:
+  use_cases_not_covered: []
+  stories_not_traced: []
+review_findings:
+  - "US-03 originally introduced viewing personal reservations outside the fixed six use cases"
+  - "US-05 originally introduced general room information management instead of UC-04 block or unblock"
+  - "US-06 originally described viewing reservations rather than reviewing usage over a period"
+  - "UC-06 is included from booking and cancellation and should not have an independent actor link"
+honesty:
+  can_explain_everything_submitted: no
+  ai_usage_disclosed: yes
