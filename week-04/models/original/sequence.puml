@@ -1,0 +1,69 @@
+@startuml
+title Smart Campus - Book Room (US-01)
+
+actor Student
+participant BookingService
+database BookingRepository
+
+note right of Student
+Assumptions:
+- Requesting student identity is known.
+- Selected room exists.
+- Student supplies the time slot.
+- Touching bookings do not overlap.
+end note
+
+Student -> BookingService : bookRoom(studentId, roomId, startTime, endTime)
+activate BookingService
+
+BookingService -> BookingService : validateTime(startTime, endTime)
+
+note right of BookingService
+R1: Future start, duration > 0 and <= 2 hours.
+end note
+
+alt Invalid time or duration
+ BookingService --> Student : bookingRejected("Invalid time or duration")
+
+else Valid time and duration
+ BookingService -> BookingRepository : isRoomBlocked(roomId)
+ activate BookingRepository
+ BookingRepository --> BookingService : blocked
+ deactivate BookingRepository
+
+ alt Room blocked (R3)
+  BookingService --> Student : bookingRejected("Room is blocked")
+
+ else Room available for request
+  BookingService -> BookingRepository : tryCreateBooking(studentId, roomId, startTime, endTime)
+  activate BookingRepository
+
+  note right of BookingRepository
+  R2: Check active-booking conflicts atomically.
+  R3: Recheck blocked status before commit.
+  Create only if checks pass; otherwise no save.
+  end note
+
+  alt Reservation succeeds
+   BookingRepository --> BookingService : bookingCreated(bookingId)
+   deactivate BookingRepository
+
+   BookingService -> BookingService : generateConfirmation(bookingId)
+
+   note right of BookingService
+   R4: Confirmation is generated only on success.
+   end note
+
+   BookingService --> Student : bookingConfirmed(bookingId, confirmation)
+
+  else Reservation rejected (unavailable or newly blocked)
+   BookingRepository --> BookingService : reservationRejected(reason)
+   deactivate BookingRepository
+
+   BookingService --> Student : bookingRejected(reason)
+  end
+ end
+end
+
+deactivate BookingService
+@enduml
