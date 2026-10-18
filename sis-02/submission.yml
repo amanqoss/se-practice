@@ -27,7 +27,7 @@ checker:
   pass: 44
   fail: 0
   error: 0
-  commit: "51db3a0"
+  commit: "66b20cd"
 
 counts:
   stories: 3
