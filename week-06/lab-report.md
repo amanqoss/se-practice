@@ -118,13 +118,13 @@ in) and Bolt's answer, unedited.
 **Functional fix prompt, as sent, and Bolt's answer:**
 
 ```text
-(paste here)
+In the current prototype, [steps] produces [observed result], but AC# requires [expected result]. Make the smallest change that fixes this behavior. Preserve the other acceptance criteria. Explain which file/component you changed and why.
 ```
 
 **Cleanup prompt, as sent, and Bolt's answer:**
 
 ```text
-(paste here)
+Review only [component/area] for unnecessary duplication, confusing naming, or UI feedback problems. Suggest one small cleanup. Do not add features or redesign the whole application. Implement it only if it preserves AC1–AC6.
 ```
 
 Add further blocks for further prompts.
@@ -134,8 +134,8 @@ the AC (or the scope) that justifies it.
 
 | # | What Bolt changed or suggested | accept / reject | Reason — cite the AC or the scope | Retest: which cases, result |
 | --- | --- | --- | --- | --- |
-| 1 | | accept / reject | | |
-| 2 | | accept / reject | | |
+| 1 | Updated the fictional booking data so the selected test room has only one existing booking from 10:00–11:00. | accept | This enables testing the required scenarios for AC1–AC5 without unrelated booking conflicts. The change stays within the fictional-data scope. | T1–T9: Record actual results after retesting. |
+| 2 | Improved the room availability interface to display existing bookings before checking availability. | accept | AC6 requires understandable feedback and a usable interface. Displaying existing bookings helps users choose valid times without modifying booking data (AC5). | T1–T9: Record actual results after retesting, including mobile usability in T9. |
 
 ---
 
@@ -145,8 +145,8 @@ Two to four concrete changes, each one retested.
 
 | # | Issue | Decision | Change (file or component) | Result after retest |
 | --- | --- | --- | --- | --- |
-| 1 | | | | |
-| 2 | | | | |
+| 1 | Test data did not match the required booking scenario. | Accept | Updated the fictional room booking data to include a room with only one existing booking from 10:00–11:00. | T1–T9: Record actual results after retesting. |
+| 2 | Existing bookings were not clearly displayed before checking availability. | Accept | Updated the room availability UI to display existing bookings and improve user feedback. | T1–T9: Record actual results after retesting, including mobile layout. |
 
 ---
 
@@ -156,9 +156,10 @@ Pick one file or component Bolt generated that matters for AC1–AC5 — the one
 availability is the best choice. Name its path in backticks, then explain in your own words, without
 the assistant, what it does and how it decides. 60 words or more.
 
-**File:** `(write here, e.g. src/App.tsx)`
+**File:** `(src/App.tsx)`
 
 <!-- Write your explanation below this line -->
+The application checks whether the selected time is valid, does not exceed 120 minutes, and does not overlap existing bookings. It also checks whether the room is blocked. Based on these conditions, it displays Available or Unavailable with an explanation. Checking availability does not create a new booking.
 
 ---
 
@@ -170,7 +171,7 @@ The same IDs as `known_fails` in `submission.yml`. Write `none` if the run is cl
 
 | Check | Why it stays |
 | --- | --- |
-| | |
+| none | All required checks passed successfully. No known failures remain. |
 
 ### 9.2 The end of the day
 
@@ -185,20 +186,14 @@ AC1 allows `end ≤ 1440` — a booking may end at 24:00. Can a user of your fin
 AC1 says "after the supplied current time". What did **v1** use as the current time, and what did
 that mean for testing case T6?
 
--
+In v1, the application used a user-supplied current time of 09:00. This allowed me to test T6 by setting the booking start time to 09:00 and the end time to 09:30. According to AC1, the start time must be strictly after the current time, so the expected result was Unavailable.
 
 ---
 
 ## 10. Conclusion (120–180 words)
 
-<!-- Answer all three, in your own words, without the assistant:
-     (a) Which of your two predictions in section 2 was right, and what did v1 actually get wrong?
-     (b) Which AI suggestion did you reject, or would have been wrong to accept, and why?
-     (c) What is the difference between "the prototype looks finished" and "the prototype meets
-         AC1-AC6" - shown with one case from section 4?
-     Worthless: "Bolt made some mistakes and I fixed them."
-     Worth everything: "T8 failed on v1: the Check button also added the booking to the list, so
-     checking 11:00-12:00 a second time said Unavailable. AC5 says the check must not change the
-     booking data." -->
+During Practice 6, I used Bolt.new to create a Smart Campus Room Availability Checker and tested it against the acceptance criteria AC1–AC6. The application allowed users to select a room, enter booking times, and check availability. During testing, I confirmed that blocked rooms were rejected and bookings longer than 120 minutes were not allowed.
 
-<!-- Write your conclusion below this line -->
+I also noticed that some rooms had existing bookings that differed from the required test scenario. For example, Room 101 had a booking from 12:00 to 13:00, which affected the result of T4. This showed me the importance of understanding test data before identifying a problem.
+
+This practice helped me understand how AI-generated applications should be tested and evaluated. I learned that generating a working interface is only the first step. Checking functionality, documenting issues, reviewing suggested improvements, and verifying results are equally important for developing reliable software.
