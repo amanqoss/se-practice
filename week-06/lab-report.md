@@ -105,8 +105,8 @@ log a justified cleanup that preserves behaviour. Save a screenshot of each as
 
 | # | Issue | Evidence: steps → expected → observed | Priority | Decision |
 | --- | --- | --- | --- | --- |
-| 1 | | | High / Medium / Low | Fix / Reject / Defer |
-| 2 | | | High / Medium / Low | Fix / Reject / Defer |
+| 1 | Cannot reproduce the prescribed test setup if booking data is not configurable | Steps: Select Room 101, set current time to 09:00, and request 12:00–14:00. Expected: Available under the required test setup with only a 10:00–11:00 booking. Observed: Unavailable because Room 101 has another booking from 12:00–13:00. The provided sample data differs from the required test scenario. | High | Fix |
+| 2 | Existing bookings are not clearly displayed before checking availability | Steps: Select Room 204 and inspect the page before checking a time interval. Expected: The interface should provide clear booking information to help students select a valid time (AC6). Observed: The existing 12:00–13:00 booking becomes apparent only after submitting an overlapping request. | Medium | Fix |
 
 ---
 
