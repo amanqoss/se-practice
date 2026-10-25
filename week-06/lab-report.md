@@ -52,12 +52,15 @@ Use fictional sample data only. Keep the implementation simple and within one-pa
 ## 3. Task 2 — prototype v1
 
 v1 export saved in `original/` and screenshot saved as `evidence/v1.png` **before** any cleanup
-prompt: yes / no
+prompt: yes 
 
 **Bolt's list of the files/components it created, pasted unedited:**
 
-```text
-(paste here)
+```
+package.json
+src/App.tsx
+src/index.css
+index.html
 ```
 
 **What v1 does — one line per thing that works, or visibly does not:**
@@ -81,15 +84,15 @@ no way to set up the case). Save each final run as `evidence/final-T<n>.png`.
 
 | # | Case | What you set up and request | Expected | AC | Result on v1 | Result on final | Final screenshot |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| T1 | Touching | 11:00–12:00 | Available | AC4 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T1.png |
-| T2 | Overlap | 10:30–11:30 | Unavailable | AC4 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T2.png |
-| T3 | Blocked | 11:00–12:00, room blocked | Unavailable | AC3 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T3.png |
-| T4 | Exactly 2 hours | 12:00–14:00 | Available | AC2 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T4.png |
-| T5 | Over 2 hours | 12:00–14:01 | Unavailable | AC2 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T5.png |
-| T6 | Starts now | 09:00–09:30 (current time 09:00) | Unavailable | AC1 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T6.png |
-| T7 | Reversed times | 12:00–11:00, and the page says why | Unavailable | AC1, AC6 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T7.png |
-| T8 | Same check twice | T1, then T1 again without reloading | Available | AC5 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T8.png |
-| T9 | Narrow screen | T1 at about 375 px wide | Available | AC6 | Available / Unavailable / Not testable | Available / Unavailable / Not testable | final-T9.png |
+| T1 | Touching | 11:00–12:00 | Available | AC4 | Available | final-T1.png |
+| T2 | Overlap | 10:30–11:30 | Unavailable | AC4 | Unavailable | final-T2.png |
+| T3 | Blocked | 11:00–12:00, room blocked | Unavailable | AC3 | Unavailable | final-T3.png |
+| T4 | Exactly 2 hours | 12:00–14:00 | Available | AC2 | Available | final-T4.png |
+| T5 | Over 2 hours | 12:00–14:01 | Unavailable | AC2 | Unavailable | final-T5.png |
+| T6 | Starts now | 09:00–09:30 (current time 09:00) | Unavailable | AC1 | Unavailable | final-T6.png |
+| T7 | Reversed times | 12:00–11:00, and the page says why | Unavailable | AC1, AC6 | Unavailable | final-T7.png |
+| T8 | Same check twice | T1, then T1 again without reloading | Available | AC5 | Available | final-T8.png |
+| T9 | Narrow screen | T1 at about 375 px wide | Available | AC6 | Available | final-T9.png |
 
 ---
 
