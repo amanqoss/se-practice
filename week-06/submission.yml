@@ -19,7 +19,7 @@ student:
 
 assistant:
   tool: Bolt.new                 # Bolt.new — or the tool you used instead, with fallback_reason filled
-  model: not displayed               # the exact model Bolt shows (with its version), or: not displayed
+  model: Bolt Forge               # the exact model Bolt shows (with its version), or: not displayed
   fallback_reason: none   # only if tool is not Bolt.new: why (e.g. "Bolt daily token limit reached"); else: none
 
 bolt:
@@ -60,7 +60,7 @@ review_findings:
   -
 
 honesty:
-  v1_export_unedited:                # yes | no   original/ holds Bolt's first version, as downloaded
-  screenshots_unedited:              # yes | no   every image in evidence/ is an unedited capture
-  can_explain_component_without_ai:  # yes | no   you may be asked in class
-  ai_usage_disclosed:                # yes | no   AI_USAGE.md is complete
+  v1_export_unedited:                # yes           original/ holds Bolt's first version, as downloaded
+  screenshots_unedited:              # yes           every image in evidence/ is an unedited capture
+  can_explain_component_without_ai:  # yes, partly   you may be asked in class
+  ai_usage_disclosed:                # yes           AI_USAGE.md is complete

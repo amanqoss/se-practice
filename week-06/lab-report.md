@@ -117,13 +117,13 @@ in) and Bolt's answer, unedited.
 
 **Functional fix prompt, as sent, and Bolt's answer:**
 
-```text
+```
 In the current prototype, [steps] produces [observed result], but AC# requires [expected result]. Make the smallest change that fixes this behavior. Preserve the other acceptance criteria. Explain which file/component you changed and why.
 ```
 
 **Cleanup prompt, as sent, and Bolt's answer:**
 
-```text
+```
 Review only [component/area] for unnecessary duplication, confusing naming, or UI feedback problems. Suggest one small cleanup. Do not add features or redesign the whole application. Implement it only if it preserves AC1–AC6.
 ```
 
