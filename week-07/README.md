@@ -481,4 +481,4 @@ Only `app/` with its source files is committed. `node_modules/` never is.
 
 **Where does the grader run my files?** The checker reads them and runs nothing. The grader can run
 your suite with `npx vitest run` in `app/`, and that is why §6.3 must be the output of the suite
-you committed.
+you committed
