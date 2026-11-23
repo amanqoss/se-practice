@@ -233,7 +233,7 @@ Use fictional sample data only. Keep the implementation simple and within one-pa
      recommendation you rejected or modified, and why; what you would improve next without
      expanding the scope. -->
 
-(write here)
+Reviewing the can_book condition would provide knowledge of the booking conditions. Testing for 24:00 on Bolt helped in knowing how the UI behaves when midnight is entered. Reliability: In version 1 of Python, inclusive boundary comparison was used, and hence 11:00 was considered a collision rather than using half open intervals. Usability: The form crashed or behaved oddly with midnight input. Security: Elimination of unneeded database packages reduces vulnerability. And as a programmer, I determine what the expected outcomes are, whether they are tested for, and what files, applications, or services can be used by the assistant. Input for End allow me to enter 24:00 time format when Start and Current Time were still pickers; now I am going to try inputting 24:00 on a phone keyboard.
 
 ## 11. Appendix A — AI exchanges
 
