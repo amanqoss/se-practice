@@ -1,0 +1,25 @@
+' diagrams/after.puml — the same view of your FINAL code. It must show rooms, booking, filter
+' and the UI (App and any components), with an arrow for each import. Replace this stub.
+'
+@startuml
+title SIS 04 room catalog
+component "main.tsx" as Main
+component "index.css" as CSS
+component "App.tsx" as App
+component "rooms.ts" as Rooms
+component "booking.ts" as Booking
+component "filter.ts" as Filter
+component "booking.test.ts" as Tests
+component "catalog.test.ts" as CatalogTests
+Main --> App
+Main --> CSS
+App --> Rooms : ROOMS
+App --> Filter : filterRooms
+App --> Booking : checkRoom
+Filter ..> Rooms : Room type
+Booking ..> Rooms : Room and Interval types
+Tests --> Booking
+CatalogTests --> Booking
+CatalogTests --> Filter
+CatalogTests ..> Rooms : Room type
+@enduml
