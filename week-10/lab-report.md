@@ -94,7 +94,7 @@ Git status showed no changes in app/ after the review.
 What you sent, exactly (the deck's prompt):
 
 ```text
-Analyze this Smart Campus Room Availability Check application WITHOUT modifying any files. List possible problems for correctness, security, privacy, reliability, maintainability, and agent execution. For each problem, list the exact source code line/missing test, describe the consequence, recommend how to confirm it, and note any uncertainties. Do not fabricate results.
+Analyze this Smart Campus Room Availability Check application without modifying any files. List possible problems for correctness, security, privacy, reliability. Recommend how to confirm it and do not fabricate results.
 ```
 
 The assistant's answer, pasted unedited:
@@ -502,7 +502,7 @@ index 51d84ca..0b815cc 100644
 -}): boolean {
 -  if (!(0 <= start && start < end && end <= 1440)) return false;
 -  if (!(start > now)) return false;
--  if (end - start > 120) return false;
+-  if (end - start > 120) return false; }
 +export function canBook({ start, end, now, blocked, bookings }: BookingRequest): boolean {
 +  if (!validRequestWindow(start, end, now)) return false;
    if (blocked) return false;
